@@ -12,7 +12,7 @@ const perplexityRoutes = require('./routes/perplexity'); // Import the perplexit
 const userRoutes = require('./routes/userRoutes'); // Add this line
 const componentRoutes = require('./routes/componentRoutes'); // Add this line
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4001;
 
 // Use CORS middleware
 app.use(cors());
