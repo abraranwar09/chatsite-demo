@@ -1,0 +1,234 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff; /* Light chocolate color */
+}
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+.message {
+    max-width: 70%;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    line-height: 1.4;
+}
+.user-message {
+    background-color: #d1b2c8; /* Dark chocolate color */
+    color: black;
+    align-self: flex-end;
+    margin-left: auto;
+}
+.ai-message {
+    background-color: #f4e3ef; /* Chocolate color */
+    color: black;
+    max-width: 100% !important;
+}
+.chat-input {
+    display: flex;
+    padding: 20px;
+    background-color: #f4e3ef; /* Light chocolate color */
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.chat-input button {
+    padding: 10px 20px;
+    background: linear-gradient(90deg,#0176C8 0%,#BF248B 100%); /* Dark chocolate color */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.skeleton-loader {
+    width: 100%;
+    height: 50px; /* Adjust height as needed */
+    background-color: #f4e3ef; /* Light grey color */
+    border-radius: 20px;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.button-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.slider-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f8f8; /* Off-white background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.slide h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.slide p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.slide .read-more {
+    background: linear-gradient(90deg,#0176C8 0%,#BF248B 100%);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+}
+
+.slide .read-more:hover {
+    opacity: 0.8;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .slide h2 {
+        font-size: 20px;
+    }
+s
+    .slide p {
+        font-size: 14px;
+    }
+
+    .slide .read-more {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .arrow {
+        font-size: 20px;
+        padding: 8px 12px;
+    }
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #fff; /* Optional: match the background color */
+}
+
+.logo {
+    max-width: 150px; /* Adjust size as needed */
+    height: auto;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire area */
+}
+
+.skip-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg,#0176C8 0%,#BF248B 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it is above the video */
+}

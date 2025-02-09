@@ -1,0 +1,473 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #000; Light chocolate color
+    /* background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.705)), url(./assets/thumbnails/movie_thumbnail.jpg); */
+}
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+.message {
+    max-width: 70%;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 2px;
+    line-height: 1.4;
+}
+.user-message {
+    background-color: #b7040c; /* Dark chocolate color */
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+}
+.ai-message {
+    position: relative; /* Position relative to allow absolute positioning of the arrow */
+    background-color: #212121; /* Chocolate color */
+    color: white;
+    max-width: 100% !important;
+    padding: 10px;
+    border-radius: 8px;
+    margin-left: 10px; /* Ensure there's space for the arrow */
+}
+
+.ai-message::before {
+    content: '';
+    position: absolute;
+    top: 3px; /* Adjust to align with the avatar */
+    left: -19px; /* Position the arrow to point towards the avatar */
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #212121 transparent transparent; /* Creates the arrow effect */
+    z-index: -1; /* Ensure the arrow is behind the message bubble */
+}
+
+.chat-input {
+    display: flex;
+    padding: 20px;
+    background-color: #000; /* Light chocolate color */
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.chat-input button {
+    padding: 10px 20px;
+    background: #b7040c; /* Dark chocolate color */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.skeleton-loader {
+    width: 100%;
+    height: 50px; /* Adjust height as needed */
+    background-color: #000000; /* Light grey color */
+    border-radius: 20px;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 90%;
+    max-width: 400px;
+    padding: 16px;
+    margin: 0 auto; /* Centers the container horizontally */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.logo {
+    max-width: 210px; /* Adjust size as needed */
+    height: auto;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire area */
+}
+
+.skip-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #b7040c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it is above the video */
+}
+
+.message-container {
+    display: flex;
+    align-items: flex-start; /* Aligns items to the top */
+    margin-bottom: 15px;
+}
+
+.ai-message-avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px; /* Space between avatar and message */
+    border-radius: 50%; /* Makes the avatar circular */
+    background-color: black; /* Black circle background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-image {
+    width: 28px; /* Slightly smaller than the container */
+    height: 28px;
+    border-radius: 50%; /* Ensures the image is circular */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 90%;
+    max-width: 400px;
+    padding: 16px;
+    margin: 0 auto; /* Centers the container horizontally */
+    margin-left: 5vh !important;
+    margin-top: -30px !important;
+}
+
+.choice-button {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid #3e3e3e;
+    border-radius: 8px;
+    padding: 16px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.4s ease;
+    width: 100%;
+}
+
+.choice-button:hover {
+    border-color: rgb(255, 0, 0);
+}
+
+.grid-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 150%;
+    margin-left: -9vh !important;
+  }
+
+  .grid-button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 65%;
+    max-width: 400px;
+    padding: 16px;
+    margin: 0 auto; /* Centers the container horizontally */
+    margin-top: -30px;
+  }
+
+  .grid-choice-button {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid #3e3e3e;
+    border-radius: 8px;
+    padding: 16px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.4s ease;
+    width: 100%;
+  }
+
+  .grid-choice-button:hover {
+    border-color: rgb(255, 0, 0);
+  }
+
+  .slider-wrapper {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: white;
+    padding: 20px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .slider {
+    display: flex;
+    transition: transform 0.3s ease;
+    gap: 8px;
+    cursor: grab;
+  }
+
+  .slider:active {
+    cursor: grabbing;
+  }
+
+  .slide {
+    flex: 0 0 200px;
+    padding: 4px;
+  }
+
+  .slide img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .slide-title {
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 20px 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure buttons are above other elements */
+    display: block; /* Ensure buttons are displayed */
+  }
+
+  .prev { left: 0; }
+  .next { right: 0; }
+
+  .details-slider-wrapper {
+    width: 90%;
+    max-width: 600px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    /* margin: 0 auto !important; */
+    margin-left: 5vh;
+    }
+
+  .details-slider-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .details-slider {
+    position: relative;
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+
+  .details-slide {
+    flex: 0 0 100%;
+    position: relative;
+  }
+
+  .details-slide img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .details-slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    padding-right: 120px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    font-size: 0.8rem;
+  }
+
+  .details-slider-nav-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .details-slider-nav {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  .details-slider-nav:hover {
+    background: rgba(0,0,0,0.8);
+  }
+
+  .details-buttons {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .details-action-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background: #B91C1C;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+
+  .details-action-button:hover {
+    opacity: 0.9;
+  }
+
+  .nissan-slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.nissan-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.nissan-slide {
+    min-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.nissan-slide h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.nissan-slide img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.nissan-slide .price {
+    font-size: 1.8rem;
+    color: #cc0000;
+    margin-top: 1rem;
+}
+
+.nissan-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure buttons are above other elements */
+    display: block; /* Ensure buttons are displayed */
+}
+
+.nissan-prev {
+    left: 20px;
+}
+
+.nissan-next {
+    right: 20px;
+}
+
+.nissan-nav-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}

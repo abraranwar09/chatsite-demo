@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VICI Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="chat-container">
+        <div class="logo-container">
+            <!-- <img src="./assets/logo1.png" alt="Logo" class="logo"> -->
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Nissan_2020_logo.svg/716px-Nissan_2020_logo.svg.png" 
+                     alt="Nissan Logo" 
+                     style="width: 80px; height: auto; margin-bottom: 20px;">
+                
+                <!-- <div style="font-family: 'Red Hat Display', sans-serif; font-size: 16px; font-weight: 300; letter-spacing: 6px; margin-bottom: 40px;">
+                    NISSAN
+                </div> -->
+                
+                <div style="font-family: 'Red Hat Display', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; margin-bottom: 5px; color: black; opacity: 0.8;">
+                    BIG. BOLD. BEAUTIFUL.
+                </div>
+                
+                <div style="font-family: 'Archivo', sans-serif; font-size: 28px; font-weight: 300; letter-spacing: 2px; color: #000;">
+                    NISSAN MAGNITE
+                </div>
+            </div>
+        </div>
+        <div class="chat-messages">
+        </div>
+        <div id="lottieCar" class="lottie-car"></div>
+        <div class="chat-input">
+            <input id="messageInput" type="text" placeholder="Type your message...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    <div id="videoOverlay" class="video-overlay">
+        <video id="introVideo" class="video" src="./assets/vid2.mp4" autoplay muted playsinline controls></video>
+        <button id="skipButton" class="skip-button">Skip</button>
+    </div>
+    <script src="chat.js"></script>
+    <script src="../utilities/display.js"></script>
+    <script src="../utilities/tool_executor.js"></script>
+    <script src="../utilities/tool_handler.js"></script>
+    <script src="../utilities/tools.js"></script>
+    <script src="videoOverlay.js"></script>
+    <script src="anim.js"></script>
+</body>
+
+</html>
