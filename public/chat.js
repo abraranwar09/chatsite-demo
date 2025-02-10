@@ -154,6 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.chat-messages').appendChild(skeletonLoader);
             console.log('Skeleton loader added to chat messages.');
 
+            // Show the overlay
+            document.getElementById('interactionOverlay').style.display = 'block';
+
             try {
                 const data = await sendMessage(message);
                 console.log('Data received from sendMessage:', data);
@@ -172,6 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error handling message:', error);
                 skeletonLoader.remove();
                 console.log('Skeleton loader removed due to error.');
+            } finally {
+                // Hide the overlay
+                document.getElementById('interactionOverlay').style.display = 'none';
             }
         }
     }
