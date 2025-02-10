@@ -1043,16 +1043,6 @@ async function showProductSection() {
                     <a href="https://datalens.replit.app/" target="_blank" class="pr-product-button">Take a tour</a>
                 </div>
 
-                <!-- Product 4 -->
-                <div class="pr-product-card">
-                    <img src="./assets/logos/core.png" alt="Team Collaboration" class="pr-product-image">
-                    <h3 class="pr-product-name">CORE</h3>
-                    <p class="pr-product-description">
-                        Our Inova Core platform empowers you to automate tasks, allowing you to focus on what truly matters – growing your business.
-                    </p>
-                    <a href="https://core.inovasolutions.ai/" target="_blank" class="pr-product-button">Take a tour</a>
-                </div>
-
                 <!-- Product 5 -->
                 <div class="pr-product-card">
                     <img src="./assets/logos/academy.png" alt="Analytics Dashboard" class="pr-product-image">

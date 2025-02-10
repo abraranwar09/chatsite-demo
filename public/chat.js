@@ -53,6 +53,7 @@ How to start: Show option buttons for the following using your button component 
 "I am new here. Tell me more!"
 "Book a meet with Inova"
 "Show me something"
+"Get your own Chat-Site"
 
 Send only button_text in your data array.
 
